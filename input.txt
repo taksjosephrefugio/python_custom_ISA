@@ -1,0 +1,114 @@
+#generate seeds
+01110101	#addi r1, 13	# loop counter
+00111101	#addi r0, 15
+01010010	#dec r1, r1	# decrement counter
+01001011    #bnez r1
+00100001	#addi r0, 8 #s0 = 203
+01111101	#addi r1, 15	# loop counter
+10100001	#addi r2, 8	# start of python memory list
+00101100	#sb r0, r2	# store seed to data memory
+10000101	#addi r2, 1	# increment memory index
+00001000	#sdm r0, r0	# generate new seed
+00101100	#sb r0, r2	# store seed to data memory
+10000101	#addi r2, 1	# increment memory index
+00001000	#sdm r0, r0	# generate new seed
+01010010	#dec r1, r1	# decrement counter
+01010011	#bnez r1, loop2	#
+
+
+#free registers
+00000110    #xor r0, r0 # free(r0)
+01010110	#xor r1, r1	# free(r1)
+10100110	#xor r2, r2	# free(r2)
+11110110    #xor r3, r3 # free(r3)
+
+
+#average non-remainder
+00111101	#addi r0, 15
+00000101    #addi r0, 1
+01111101    #addi r1, 15
+01100001    #addi r1, 8
+10011110    #lb r2, (r1)
+10111010    #srl r2, 4
+11100000    #add r3, r2
+00000010    #dec r0, r0
+01010010    #dec r1, r1
+00010111    #bnez r0, 5
+01111101    #addi r1, 15
+01001001    #addi r1, 2
+11011100    #sb r3, (r1)
+
+
+#free registers
+00000110    #xor r0, r0 # free(r0)
+01010110	#xor r1, r1	# free(r1)
+10100110	#xor r2, r2	# free(r2)
+11110110    #xor r3, r3 # free(r3)
+
+
+#average remainder
+00111101	#addi r0, 15
+00000101    #addi r0, 1
+01111101    #addi r1, 15
+01100001    #addi r1, 8
+10011110    #lb r2, (r1)
+10100100    #and r2, r2 (0xF)
+11100000    #add r3, r2
+00000010    #dec r0, r0
+01010010    #dec r1, r1
+00010111    #bnez r0, 5
+11111010    #srl r3, 4
+01111101    #addi r1, 15
+01001001    #addi r1, 2
+00011110    #lb r0, (r1)
+11000000    #add r3, r0
+11011100    #sb r3, (r1)
+
+
+#free registers
+00000110    #xor r0, r0 # free(r0)
+01010110	#xor r1, r1	# free(r1)
+10100110	#xor r2, r2	# free(r2)
+11110110    #xor r3, r3 # free(r3)
+
+
+#individual Hamming weights
+00111101	#addi r0, 15
+00100001    #addi r0, 8
+01001110    #lb r1, (r0)
+10010100    #and r2, r1 (0x1)
+11100000    #add r3, r2
+01001010    #srl r1, 1
+01001111    #bnez r1, -3
+01000000    #add r1, r0
+01111101    #addi r1, 15
+01100101    #addi r1, 9
+11011100    #sb r3, (r1)
+11110110    #xor r3, r3 # free(r3)
+00000010    #dec r0, r0
+00101111    #bnez r0, -10
+
+
+#free registers
+00000110    #xor r0, r0 # free(r0)
+01010110	#xor r1, r1	# free(r1)
+10100110	#xor r2, r2	# free(r2)
+11110110    #xor r3, r3 # free(r3)
+
+
+#average Hamming weight
+00111101	#addi r0, 15
+00000101    #addi r0, 1
+01111101    #addi r1, 15
+01111101    #addi r1, 15
+01111101    #addi r1, 15
+01001001    #addi r1, 2
+10011110    #lb r2, (r1)
+11100000    #add r3, r2
+00000010    #dec r0, r0
+01010010    #dec r1, r1
+00010011    #bnez r0, 5
+01111101    #addi r1, 15
+01001001    #addi r1, 2
+11111010    #srl r3, 4
+11011100    #sb r3, (r1)
