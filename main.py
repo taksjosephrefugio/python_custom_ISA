@@ -2,11 +2,9 @@
 # @Authors Evan Gruzlewski                                                          #
 #          Tak's Joseph Refugio                                                     #
 #          Kusai Burhan                                                             #
-# University of Illinois at Chicago                                                 #
 # This program is a custom assembly simulator which runs assembly given as binary   #
 # Input: Custom assembly as binary, adhering to the following guidelines            #
 #        as described in the report write-ups.                                      #
-# Last Worked by: Evan, 04/04/2019, 4:30PM                                          #
 # Version: Full working as intended                                                 #
 #####################################################################################
 
